@@ -137,10 +137,40 @@ public abstract class AbstractLayer implements Layer {
     }
 
     @Override
-    public void fireAll() {
+    public void fire() {
         for (Neurone neurone : neurones) {
             neurone.fire();
         }
+    }
+
+    @Override
+    public void reverseFire() {
+        for (Neurone neurone : neurones) {
+            neurone.reverseFire();
+        }
+    }
+
+    @Override
+    public void setValues(double[] values) {
+        int i = 0;
+        for (Neurone neurone : neurones) {
+            neurone.setValue(values[i++]);
+        }
+    }
+
+    @Override
+    public void getValues(double[] values) {
+        int i = 0;
+        for (Neurone neurone : neurones) {
+            values[i++] = neurone.getValue();
+        }
+    }
+
+    @Override
+    public double[] getValues() {
+        double[] values = new double[neurones.size()];
+        getValues(values);
+        return values;
     }
 
     private void buildLinksBetween(Layer before, Layer after) {

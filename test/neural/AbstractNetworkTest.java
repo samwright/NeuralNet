@@ -48,9 +48,6 @@ public class AbstractNetworkTest {
 
     @Test
     public void testGetInputLayer() throws Exception {
-        Layer layer = n.getInputLayer();
-        assertTrue(layer.getNeurones().get(0) instanceof InputNeurone);
-
         assertEquals(n.getInputLayer(), n.getOutputLayer().getPrev().getPrev());
     }
 

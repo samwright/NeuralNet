@@ -76,7 +76,12 @@ public interface Layer {
     /**
      * Fires all the neurones in the layer.
      */
-    void fireAll();
+    void fire();
+
+    /**
+     * Reverse fires all neurones in the layer.
+     */
+    void reverseFire();
 
     /**
      * Returns true if a new link should be created between the neurones with indices layer_1_index
@@ -96,5 +101,26 @@ public interface Layer {
      * @return The initial weight of the link.
      */
     public abstract double getInitialWeight(int layer_1_index, int layer_2_index);
+
+    /**
+     * Returns an array of the values of the neurones in the layer.
+     *
+     * @return Values of the neurones in the layer.
+     */
+    double[] getValues();
+
+    /**
+     * Places the values of all neurones in the layer in the given array.
+     *
+     * @param values The array to fill with neurone values.
+     */
+    void getValues(double[] values);
+
+    /**
+     * Sets the values of all neurones in the layer.
+     *
+     * @param values New values for all neurones in the layer.
+     */
+    void setValues(double[] values);
 
 }

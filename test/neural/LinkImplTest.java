@@ -16,8 +16,8 @@ public class LinkImplTest {
 
     @Before
     public void setUp() throws Exception {
-        in = new InputNeurone();
-        out = new InputNeurone();
+        in = new NeuroneImpl();
+        out = new NeuroneImpl();
 
         link = new LinkImpl(in, out);
     }

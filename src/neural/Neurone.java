@@ -59,12 +59,25 @@ public interface Neurone {
     void fire();
 
     /**
+     * Fires the neurone as per 'fire' method, but using output neurones as input.
+     */
+    void reverseFire();
+
+    /**
      * Gets the current output value from the neurone (as calculated by the
      * "calculateTransitionValue" function when the neurone was "fire"d.
      *
      * @return This neurone's current output value.
      */
     double getValue();
+
+    /**
+     * Artificially sets the output value of the neurone (without considering input values etc...).
+     * This is useful to set input neurone values.
+     *
+     * @param value New output value.
+     */
+    void setValue(double value);
 
     /**
      * Gets the sum of the weighted inputs to the neurone, as of the last time

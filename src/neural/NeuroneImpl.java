@@ -1,6 +1,7 @@
 package neural;
 
 import equation.Equation;
+import equation.Identity;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -18,6 +19,9 @@ public class NeuroneImpl implements Neurone {
     private final Equation transition_equation;
     private double value, bias = 0, weighted_total;
 
+    public NeuroneImpl() {
+        this.transition_equation = new Identity();
+    }
 
     public NeuroneImpl(Equation transition_equation) {
         this.transition_equation = transition_equation;
@@ -65,8 +69,24 @@ public class NeuroneImpl implements Neurone {
     }
 
     @Override
+    public void reverseFire() {
+        weighted_total = bias;
+
+        for (Link link : output_links) {
+            weighted_total += link.getWeight() * link.getOutput().getValue();
+        }
+
+        value = transition_equation.evaluate(weighted_total);
+    }
+
+    @Override
     public double getValue() {
         return value;
+    }
+
+    @Override
+    public void setValue(double value) {
+        this.value = value;
     }
 
     @Override

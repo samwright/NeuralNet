@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
  * Time: 12:45
  */
 public class NeuroneImplTest {
-    private InputNeurone n_in;
+    private Neurone n_in;
     private Neurone n, n_out;
     private Equation ident;
     private Link link_in, link_out;
@@ -35,7 +35,7 @@ public class NeuroneImplTest {
             }
         };
 
-        n_in = new InputNeurone();
+        n_in = new NeuroneImpl();
         n = new NeuroneImpl(ident);
         n_out = new NeuroneImpl(ident);
 

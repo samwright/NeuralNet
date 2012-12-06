@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 public class AbstractLayerTest {
     private Layer layer, input;
     private Neurone n1, n2, n3;
-    private InputNeurone i1, i2;
+    private Neurone i1, i2;
 
     private class SimpleEquation implements Equation {
         @Override
@@ -58,8 +58,8 @@ public class AbstractLayerTest {
 
         input = new SimpleLayer();
 
-        i1 = new InputNeurone();
-        i2 = new InputNeurone();
+        i1 = new NeuroneImpl();
+        i2 = new NeuroneImpl();
 
         i1.setValue(10.0);
         i2.setValue(20.0);
@@ -114,7 +114,7 @@ public class AbstractLayerTest {
     @Test
     public void testFireAll() throws Exception {
         layer.setPrev(input);
-        layer.fireAll();
+        layer.fire();
 
         int i=0;
         for (Neurone n : layer.getNeurones()) {

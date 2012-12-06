@@ -25,7 +25,7 @@ public abstract class AbstractNetwork implements Network {
         input_size = neurones[0];
 
         for (int i=0; i<input_size; ++i) {
-            input_layer.addNeurone(new InputNeurone());
+            input_layer.addNeurone(new NeuroneImpl());
         }
 
         Layer layer = input_layer;
@@ -64,12 +64,12 @@ public abstract class AbstractNetwork implements Network {
 
         int i=0;
         for (Neurone neurone : input_layer.getNeurones()) {
-            ((InputNeurone) neurone).setValue(input[i++]);
+            neurone.setValue(input[i++]);
         }
 
         Layer layer = input_layer.getNext();
         do {
-            layer.fireAll();
+            layer.fire();
             layer = layer.getNext();
         } while(layer != null);
 
